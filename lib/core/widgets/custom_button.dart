@@ -10,31 +10,45 @@ class CustomButton extends StatelessWidget {
     required this.color,
     this.onTap,
     required this.width,
-    required this.textcolor,
+    this.textcolor,
+    this.image,
   });
+
   final String text;
-  final Color textcolor;
+  final Color? textcolor;
   final Color color;
   final double width;
   final void Function()? onTap;
+  final String? image;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         width: width,
-        height: 48.h,
+        height: 45.h,
         decoration: BoxDecoration(
           border: Border.all(color: AppColors.yellowcolor),
           borderRadius: BorderRadius.circular(16.r),
           color: color,
         ),
-        child: Center(
-          child: Text(
-            text,
-            style: Styles.textStyle16.copyWith(color: textcolor),
-            textAlign: TextAlign.center,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (image != null) ...[
+              Image.asset(image!, width: 24.w, height: 24.h),
+              SizedBox(width: 8.w),
+            ],
+            Text(
+              text,
+              style: Styles.textStyle14.copyWith(
+                color: textcolor ?? const Color(0xff282A28),
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ],
         ),
       ),
     );

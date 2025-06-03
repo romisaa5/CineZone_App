@@ -1,3 +1,4 @@
+import 'package:cinezone_app/core/theme/app_colors.dart';
 import 'package:cinezone_app/core/theme/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,7 @@ class AppTextFormField extends StatelessWidget {
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final InputBorder? errorBorder;
-  final int ? maxLines;
+  final int? maxLines;
 
   const AppTextFormField({
     super.key,
@@ -36,7 +37,8 @@ class AppTextFormField extends StatelessWidget {
     this.prefixIcon,
     this.focusNode,
     this.onChanged,
-    this.errorBorder, this.maxLines,
+    this.errorBorder,
+    this.maxLines,
   });
 
   @override
@@ -44,54 +46,57 @@ class AppTextFormField extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-
     return TextFormField(
       maxLines: maxLines,
       validator: validator,
       onChanged: onChanged,
       controller: controller,
-      cursorColor: colorScheme.primary,
+      cursorColor: AppColors.yellowcolor,
       decoration: InputDecoration(
         isDense: true,
         contentPadding:
-            contentPadding ?? EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
-        focusedBorder: focusedBorder ??
+            contentPadding ??
+            EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.h),
+        focusedBorder:
+            focusedBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
-              borderSide: BorderSide(color: colorScheme.primary, width: 1.3.w),
+              borderRadius: BorderRadius.circular(14.r),
+              borderSide: BorderSide(color: Color(0xff282A28), width: 1.3.w),
             ),
-        enabledBorder: enabledBorder ??
+        enabledBorder:
+            enabledBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
-              borderSide: BorderSide(color: const Color.fromARGB(255, 201, 200, 200), width: 1.w),
+              borderRadius: BorderRadius.circular(14.r),
+              borderSide: BorderSide(color: Color(0xff282A28), width: 1.w),
             ),
-        errorBorder: errorBorder ??
+        errorBorder:
+            errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
-              borderSide: BorderSide(
-                color: colorScheme.error,
-                width: 1.w,
-
-              ),
+              borderRadius: BorderRadius.circular(14.r),
+              borderSide: BorderSide(color: colorScheme.error, width: 1.w),
             ),
-        focusedErrorBorder: errorBorder ??
+        focusedErrorBorder:
+            errorBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
-              borderSide: BorderSide(
-                color: colorScheme.error,
-                width: 1.w,
-              ),
+              borderRadius: BorderRadius.circular(8.r),
+              borderSide: BorderSide(color: colorScheme.error, width: 1.w),
             ),
-        hintStyle: hintStyle ??  Styles.textStyle14.copyWith(color: colorScheme.secondary.withValues(alpha: .5)),
+        hintStyle:
+            hintStyle ??
+            Styles.textStyle14.copyWith(
+              color: colorScheme.secondary.withValues(alpha: .5),
+            ),
         hintText: hintText,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
-        fillColor: backgroundColor ?? colorScheme.surface,
+        fillColor: Color(0xff282A28),
         filled: true,
       ),
       focusNode: focusNode,
       obscureText: isObscureText ?? false,
-      style: inputTextStyle ?? Styles.textStyle16.copyWith(color: colorScheme.secondary),
+      style:
+          inputTextStyle ??
+          Styles.textStyle16.copyWith(color: colorScheme.secondary),
     );
   }
 }

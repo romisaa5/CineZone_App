@@ -1,4 +1,5 @@
 import 'package:cinezone_app/features/auth/login/views/login_view.dart';
+import 'package:cinezone_app/features/auth/register/views/register_view.dart';
 import 'package:cinezone_app/features/onboarding/views/fifth_view.dart';
 import 'package:cinezone_app/features/onboarding/views/first_view.dart';
 import 'package:cinezone_app/features/onboarding/views/fourth_view.dart';
@@ -27,6 +28,7 @@ class AppRouter {
       GoRoute(path: fourthScreen, builder: (context, state) => FourthView()),
       GoRoute(path: fifthScreen, builder: (context, state) => FifthView()),
       GoRoute(path: loginView, builder: (context, state) => LoginView()),
+      GoRoute(path: registerView, builder: (context, state) => RegisterView()),
     ],
   );
 }
