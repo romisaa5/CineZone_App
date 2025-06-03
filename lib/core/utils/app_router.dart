@@ -1,3 +1,4 @@
+import 'package:cinezone_app/features/auth/login/views/forget_password.dart';
 import 'package:cinezone_app/features/auth/login/views/login_view.dart';
 import 'package:cinezone_app/features/auth/register/views/register_view.dart';
 import 'package:cinezone_app/features/onboarding/views/fifth_view.dart';
@@ -18,6 +19,8 @@ class AppRouter {
   static final loginView = '/loginview';
   static final registerView = '/registerview';
   static final emailVerifiedView = '/emailverifiedview';
+  static final forgetPassword = '/forgetpassword';
+
   static final router = GoRouter(
     initialLocation: welcomeView,
     routes: [
@@ -29,6 +32,10 @@ class AppRouter {
       GoRoute(path: fifthScreen, builder: (context, state) => FifthView()),
       GoRoute(path: loginView, builder: (context, state) => LoginView()),
       GoRoute(path: registerView, builder: (context, state) => RegisterView()),
+      GoRoute(
+        path: forgetPassword,
+        builder: (context, state) => ForgetPassword(),
+      ),
     ],
   );
 }

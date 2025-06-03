@@ -57,7 +57,8 @@ class _LoginViewState extends State<LoginView> {
                   controller: passwordController,
                   prefixIcon: Icon(Icons.lock),
                   hintText: 'Password',
-                  validator: (value) => ValidationMethods.validatePassword(value),
+                  validator:
+                      (value) => ValidationMethods.validatePassword(value),
                   suffixIcon:
                       isshown
                           ? IconButton(
@@ -80,7 +81,9 @@ class _LoginViewState extends State<LoginView> {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GoRouter.of(context).go(AppRouter.forgetPassword);
+                    },
                     child: Text(
                       'Forget Password ?',
                       style: Styles.textStyle12.copyWith(
