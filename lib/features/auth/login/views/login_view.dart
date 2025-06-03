@@ -33,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
           child: Form(
             key: formkey,
             child: Column(
-              spacing: 15.h,
+              spacing: 10.h,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(height: 80.h),
@@ -57,7 +57,7 @@ class _LoginViewState extends State<LoginView> {
                   controller: passwordController,
                   prefixIcon: Icon(Icons.lock),
                   hintText: 'Password',
-                  validator: (value) => ValidationMethods.validateEmail(value),
+                  validator: (value) => ValidationMethods.validatePassword(value),
                   suffixIcon:
                       isshown
                           ? IconButton(
@@ -112,6 +112,7 @@ class _LoginViewState extends State<LoginView> {
                   ],
                 ),
                 CustomDevider(),
+                SizedBox(height: 10.h),
                 CustomButton(
                   image: 'assets/images/google.png',
                   text: 'Login With Google',
