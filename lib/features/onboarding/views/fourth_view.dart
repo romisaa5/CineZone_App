@@ -3,8 +3,8 @@ import 'package:cinezone_app/features/onboarding/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class FirstView extends StatelessWidget {
-  const FirstView({super.key});
+class FourthView extends StatelessWidget {
+  const FourthView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class FirstView extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.asset(
-                    'assets/images/onboard1.png',
+                    'assets/images/onboard4.png',
                     height: double.infinity,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -28,22 +28,22 @@ class FirstView extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        colors: [
-                          Color.fromARGB(255, 118, 198, 213),
-                          Colors.transparent,
-                        ],
-                        stops: [0.0, 1],
+                        colors: [Colors.orange, Colors.transparent],
+                        stops: [0.0, 1.4],
                       ),
                     ),
                   ),
                   CustomContainer(
-                    title: 'Discover Movies',
-                    subtitle:
-                        'Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.',
-                    isback: false,
                     onTapnext: () {
-                      GoRouter.of(context).go(AppRouter.secondScreen);
+                      GoRouter.of(context).go(AppRouter.fifthScreen);
                     },
+                    onTapback: () {
+                      GoRouter.of(context).go(AppRouter.thirdScreen);
+                    },
+                    title: 'Rate, Review, and Learn',
+                    subtitle:
+                        "Share your thoughts on the movies you've watched. Dive deep into film details and help others discover great movies with your reviews.",
+                    isback: true,
                   ),
                 ],
               ),

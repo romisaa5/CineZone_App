@@ -3,8 +3,8 @@ import 'package:cinezone_app/features/onboarding/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class FirstView extends StatelessWidget {
-  const FirstView({super.key});
+class ThirdView extends StatelessWidget {
+  const ThirdView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class FirstView extends StatelessWidget {
               child: Stack(
                 children: [
                   Image.asset(
-                    'assets/images/onboard1.png',
+                    'assets/images/onboard3.png',
                     height: double.infinity,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -28,22 +28,22 @@ class FirstView extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        colors: [
-                          Color.fromARGB(255, 118, 198, 213),
-                          Colors.transparent,
-                        ],
+                        colors: [Colors.red, Colors.transparent],
                         stops: [0.0, 1],
                       ),
                     ),
                   ),
                   CustomContainer(
-                    title: 'Discover Movies',
-                    subtitle:
-                        'Explore a vast collection of movies in all qualities and genres. Find your next favorite film with ease.',
-                    isback: false,
+                    isback: true,
                     onTapnext: () {
+                      GoRouter.of(context).go(AppRouter.fourthScreen);
+                    },
+                    onTapback: () {
                       GoRouter.of(context).go(AppRouter.secondScreen);
                     },
+                    title: 'Create Watchlists',
+                    subtitle:
+                        'Save movies to your watchlist to keep track of what you want to watch next. Enjoy films in various qualities and genres.',
                   ),
                 ],
               ),
