@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "612594958712",
+    "project_id": "cinezone-app",
+    "storage_bucket": "cinezone-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:612594958712:android:4d20392d9e6e83839a888d",
+        "android_client_info": {
+          "package_name": "com.example.cinezone_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqtgWi5hCb6DCiZPjC3ld5t1K0qpsXClc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

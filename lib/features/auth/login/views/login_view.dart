@@ -5,6 +5,7 @@ import 'package:cinezone_app/core/utils/app_router.dart';
 import 'package:cinezone_app/core/widgets/custom_button.dart';
 import 'package:cinezone_app/core/widgets/custom_text_form_field.dart';
 import 'package:cinezone_app/features/auth/login/widgets/custom_devider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -50,7 +51,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 AppTextFormField(
                   maxLines: 1,
-                  isObscureText: true,
+                  isObscureText: isshown,
                   onChanged: (value) {
                     password = value;
                   },
@@ -82,7 +83,7 @@ class _LoginViewState extends State<LoginView> {
                   alignment: Alignment.centerRight,
                   child: TextButton(
                     onPressed: () {
-                      GoRouter.of(context).go(AppRouter.forgetPassword);
+                      GoRouter.of(context).push(AppRouter.forgetPassword);
                     },
                     child: Text(
                       'Forget Password ?',
@@ -93,6 +94,24 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 ),
                 CustomButton(
+                  onTap: () async {
+                    if (formkey.currentState!.validate()) {
+                      try {
+                        UserCredential user = await FirebaseAuth.instance
+                            .signInWithEmailAndPassword(
+                              email: email!.trim(),
+                              password: password!.trim(),
+                            );
+                        GoRouter.of(
+                          context,
+                        ).pushReplacement(AppRouter.homeview);
+                      } on FirebaseAuthException catch (ex) {
+                        if (ex.code == 'user-not-found') {
+                        } else if (ex.code == 'wrong-password') {
+                        } else {}
+                      }
+                    }
+                  },
                   text: 'Login',
                   color: AppColors.yellowcolor,
                   width: double.infinity,

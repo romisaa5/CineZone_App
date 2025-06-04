@@ -1,6 +1,7 @@
 import 'package:cinezone_app/core/utils/app_router.dart';
 import 'package:cinezone_app/features/onboarding/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 class ThirdView extends StatelessWidget {
@@ -17,9 +18,9 @@ class ThirdView extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/onboard3.png',
-                    height: double.infinity,
+                    height: 550.h,
                     width: double.infinity,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                   Container(
                     height: double.infinity,

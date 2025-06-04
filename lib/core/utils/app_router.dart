@@ -1,12 +1,15 @@
 import 'package:cinezone_app/features/auth/login/views/forget_password.dart';
 import 'package:cinezone_app/features/auth/login/views/login_view.dart';
-import 'package:cinezone_app/features/auth/register/views/register_view.dart';
+import 'package:cinezone_app/features/auth/register/presentation/views/email_verified_view.dart';
+import 'package:cinezone_app/features/auth/register/presentation/views/register_view.dart';
+import 'package:cinezone_app/features/home/presentation/views/home_view.dart';
 import 'package:cinezone_app/features/onboarding/views/fifth_view.dart';
 import 'package:cinezone_app/features/onboarding/views/first_view.dart';
 import 'package:cinezone_app/features/onboarding/views/fourth_view.dart';
 import 'package:cinezone_app/features/onboarding/views/second_view.dart';
 import 'package:cinezone_app/features/onboarding/views/start_view.dart';
 import 'package:cinezone_app/features/onboarding/views/third_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -20,9 +23,14 @@ class AppRouter {
   static final registerView = '/registerview';
   static final emailVerifiedView = '/emailverifiedview';
   static final forgetPassword = '/forgetpassword';
-
+  static final homeview = '/homeview';
   static final router = GoRouter(
-    initialLocation: welcomeView,
+    initialLocation:
+        // (FirebaseAuth.instance.currentUser != null &&
+        //         FirebaseAuth.instance.currentUser!.emailVerified)
+        //     ?
+        welcomeView,
+
     routes: [
       GoRoute(path: welcomeView, builder: (context, state) => StartView()),
       GoRoute(path: firstScreen, builder: (context, state) => FirstView()),
@@ -32,6 +40,11 @@ class AppRouter {
       GoRoute(path: fifthScreen, builder: (context, state) => FifthView()),
       GoRoute(path: loginView, builder: (context, state) => LoginView()),
       GoRoute(path: registerView, builder: (context, state) => RegisterView()),
+      GoRoute(path: homeview, builder: (context, state) => HomeView()),
+      GoRoute(
+        path: emailVerifiedView,
+        builder: (context, state) => EmailVerifiedView(),
+      ),
       GoRoute(
         path: forgetPassword,
         builder: (context, state) => ForgetPassword(),

@@ -5,9 +5,11 @@ import 'package:cinezone_app/core/utils/app_router.dart';
 import 'package:cinezone_app/core/widgets/custom_button.dart';
 import 'package:cinezone_app/core/widgets/custom_text_form_field.dart';
 import 'package:cinezone_app/features/auth/login/widgets/custom_devider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -29,6 +31,7 @@ class _RegisterViewState extends State<RegisterView> {
   String? name;
   String? confirmPassword;
   bool isshown = true;
+  bool isshownconfirm = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,7 +68,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 AppTextFormField(
                   maxLines: 1,
-                  isObscureText: true,
+                  isObscureText: isshown,
                   onChanged: (value) {
                     password = value;
                   },
@@ -95,7 +98,7 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 AppTextFormField(
                   maxLines: 1,
-                  isObscureText: true,
+                  isObscureText: isshownconfirm,
                   onChanged: (value) {
                     confirmPassword = value;
                   },
@@ -106,11 +109,11 @@ class _RegisterViewState extends State<RegisterView> {
                       (value) =>
                           ValidationMethods.validateConfirmPassword(value),
                   suffixIcon:
-                      isshown
+                      isshownconfirm
                           ? IconButton(
                             onPressed: () {
                               setState(() {
-                                isshown = !isshown;
+                                isshownconfirm = !isshownconfirm;
                               });
                             },
                             icon: Icon(Icons.visibility),
@@ -118,7 +121,7 @@ class _RegisterViewState extends State<RegisterView> {
                           : IconButton(
                             onPressed: () {
                               setState(() {
-                                isshown = !isshown;
+                                isshownconfirm = !isshownconfirm;
                               });
                             },
                             icon: Icon(Icons.visibility_off),
@@ -126,6 +129,27 @@ class _RegisterViewState extends State<RegisterView> {
                 ),
                 SizedBox(height: 10.h),
                 CustomButton(
+                  onTap: () async {
+                    if (formkey.currentState!.validate()) {
+                      final user = FirebaseAuth.instance.currentUser;
+                      try {
+                        final credential = await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                              email: email!,
+                              password: password!,
+                            );
+                        GoRouter.of(context).push(AppRouter.emailVerifiedView);
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'weak-password') {
+                          print('The password provided is too weak.');
+                        } else if (e.code == 'email-already-in-use') {
+                          print('The account already exists for that email.');
+                        }
+                      } catch (e) {
+                        print(e);
+                      }
+                    }
+                  },
                   text: 'Create Account',
                   color: AppColors.yellowcolor,
                   width: double.infinity,
@@ -150,6 +174,21 @@ class _RegisterViewState extends State<RegisterView> {
                 CustomDevider(),
                 SizedBox(height: 10.h),
                 CustomButton(
+                  onTap: () {
+                    Future<UserCredential> signInWithGoogle() async {
+                      final GoogleSignInAccount? googleUser =
+                          await GoogleSignIn().signIn();
+                      final GoogleSignInAuthentication? googleAuth =
+                          await googleUser?.authentication;
+                      final credential = GoogleAuthProvider.credential(
+                        accessToken: googleAuth?.accessToken,
+                        idToken: googleAuth?.idToken,
+                      );
+                      return await FirebaseAuth.instance.signInWithCredential(
+                        credential,
+                      );
+                    }
+                  },
                   image: 'assets/images/google.png',
                   text: 'Register With Google',
                   color: AppColors.yellowcolor,

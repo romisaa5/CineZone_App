@@ -22,17 +22,17 @@ class FifthView extends StatelessWidget {
                     'assets/images/onboard5.png',
                     height: double.infinity,
                     width: double.infinity,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                   Container(
-                    height: double.infinity,
+                    height: 550.h,
                     width: double.infinity,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
                         colors: [Colors.grey, Colors.transparent],
-                        stops: [0.0, 1.4],
+                        stops: [0.0, .6],
                       ),
                     ),
                   ),
