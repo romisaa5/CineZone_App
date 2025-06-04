@@ -26,10 +26,10 @@ class AppRouter {
   static final homeview = '/homeview';
   static final router = GoRouter(
     initialLocation:
-        // (FirebaseAuth.instance.currentUser != null &&
-        //         FirebaseAuth.instance.currentUser!.emailVerified)
-        //     ?
-        welcomeView,
+        (FirebaseAuth.instance.currentUser != null &&
+                FirebaseAuth.instance.currentUser!.emailVerified)
+            ? homeview
+            : welcomeView,
 
     routes: [
       GoRoute(path: welcomeView, builder: (context, state) => StartView()),

@@ -1,16 +1,51 @@
-# cinezone_app
+# 🎬 CineZone App
 
-A new Flutter project.
+A Flutter app for discovering movies, managing watchlists, and more designed with an engaging UI and connected to Firebase for authentication.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- 🖼 Onboarding Screens with smooth navigation and background gradients.
+- 🔐 Firebase Authentication:
+  - Login
+  - Register
+  - Forgot Password
 
-A few resources to get you started if this is your first Flutter project:
+## 📦 Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter
+- Firebase Auth
+- GoRouter
+- ScreenUtil
+- MVVM 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## 🛠 Still in Progress...
+
+Coming soon:
+- Home Screen UI
+- Movie Lists & Details
+- Search & Filters
+
+---
+## 📱 Screenshots
+
+### Onboarding Screens
+<p float="left">
+  <img src="assets/readme_assets/1.png" width="30%" />
+  <img src="assets/readme_assets/2.PNG" width="30%" />
+   <img src="assets/readme_assets/3.PNG" width="30%" />
+</p>
+<p float="left">
+  <img src="assets/readme_assets/4.PNG" width="30%" />
+    <img src="assets/readme_assets/5.PNG" width="30%" />
+   <img src="assets/readme_assets/6.PNG" width="30%" />
+</p>
+
+### Auth Screens
+<p float="left">
+  <img src="assets/readme_assets/7.PNG" width="30%" />
+  <img src="assets/readme_assets/8.PNG" width="30%" />
+  <img src="assets/readme_assets/9.PNG" width="30%" />
+</p>
+
+
