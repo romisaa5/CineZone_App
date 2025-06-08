@@ -12,7 +12,7 @@ import 'package:line_icons/line_icons.dart';
 class NavBarView extends StatelessWidget {
   const NavBarView({super.key});
   static List<Widget> views = [
-    const HomeView(),
+    HomeView(),
     const BrowseView(),
     const SearchView(),
     const ProfileView(),

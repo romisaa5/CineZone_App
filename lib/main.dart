@@ -1,4 +1,5 @@
 import 'package:cinezone_app/core/utils/app_router.dart';
+import 'package:cinezone_app/features/home/presentation/manager/cubit/movie_cubit.dart';
 import 'package:cinezone_app/features/navBar/manager/cubit/nav_bar_cubit.dart';
 import 'package:cinezone_app/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,6 +39,7 @@ class _CineZoneAppState extends State<CineZoneApp> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => NavBarCubit()),
+        BlocProvider(create: (_) => MovieCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
