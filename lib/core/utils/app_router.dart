@@ -2,7 +2,7 @@ import 'package:cinezone_app/features/auth/login/views/forget_password.dart';
 import 'package:cinezone_app/features/auth/login/views/login_view.dart';
 import 'package:cinezone_app/features/auth/register/presentation/views/email_verified_view.dart';
 import 'package:cinezone_app/features/auth/register/presentation/views/register_view.dart';
-import 'package:cinezone_app/features/home/presentation/views/home_view.dart';
+import 'package:cinezone_app/features/navBar/presentation/views/nav_bar.dart';
 import 'package:cinezone_app/features/onboarding/views/fifth_view.dart';
 import 'package:cinezone_app/features/onboarding/views/first_view.dart';
 import 'package:cinezone_app/features/onboarding/views/fourth_view.dart';
@@ -40,7 +40,7 @@ class AppRouter {
       GoRoute(path: fifthScreen, builder: (context, state) => FifthView()),
       GoRoute(path: loginView, builder: (context, state) => LoginView()),
       GoRoute(path: registerView, builder: (context, state) => RegisterView()),
-      GoRoute(path: homeview, builder: (context, state) => HomeView()),
+      GoRoute(path: homeview, builder: (context, state) => NavBarView()),
       GoRoute(
         path: emailVerifiedView,
         builder: (context, state) => EmailVerifiedView(),
