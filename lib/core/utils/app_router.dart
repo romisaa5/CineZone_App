@@ -2,6 +2,8 @@ import 'package:cinezone_app/features/auth/login/views/forget_password.dart';
 import 'package:cinezone_app/features/auth/login/views/login_view.dart';
 import 'package:cinezone_app/features/auth/register/presentation/views/email_verified_view.dart';
 import 'package:cinezone_app/features/auth/register/presentation/views/register_view.dart';
+import 'package:cinezone_app/features/home/models/movie.dart';
+import 'package:cinezone_app/features/home/presentation/views/details_view.dart';
 import 'package:cinezone_app/features/navBar/presentation/views/nav_bar.dart';
 import 'package:cinezone_app/features/onboarding/views/fifth_view.dart';
 import 'package:cinezone_app/features/onboarding/views/first_view.dart';
@@ -24,6 +26,7 @@ class AppRouter {
   static final emailVerifiedView = '/emailverifiedview';
   static final forgetPassword = '/forgetpassword';
   static final homeview = '/homeview';
+  static final detailsview = '/detailsview';
   static final router = GoRouter(
     initialLocation:
         (FirebaseAuth.instance.currentUser != null &&
@@ -41,6 +44,13 @@ class AppRouter {
       GoRoute(path: loginView, builder: (context, state) => LoginView()),
       GoRoute(path: registerView, builder: (context, state) => RegisterView()),
       GoRoute(path: homeview, builder: (context, state) => NavBarView()),
+      GoRoute(
+        path: detailsview,
+        builder: (context, state) {
+          final movie = state.extra as Movie;
+          return DetailsView(movie: movie);
+        },
+      ),
       GoRoute(
         path: emailVerifiedView,
         builder: (context, state) => EmailVerifiedView(),

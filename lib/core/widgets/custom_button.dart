@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
     required this.width,
     this.textcolor,
     this.image,
+    this.isborder = true,
   });
 
   final String text;
@@ -20,6 +21,7 @@ class CustomButton extends StatelessWidget {
   final double width;
   final void Function()? onTap;
   final String? image;
+  final bool isborder;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,8 @@ class CustomButton extends StatelessWidget {
         width: width,
         height: 45.h,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.yellowcolor),
-          borderRadius: BorderRadius.circular(16.r),
+          border: isborder ? Border.all(color: AppColors.yellowcolor) : null,
+          borderRadius: BorderRadius.circular(12.r),
           color: color,
         ),
         child: Row(
@@ -43,7 +45,7 @@ class CustomButton extends StatelessWidget {
             ],
             Text(
               text,
-              style: Styles.textStyle14.copyWith(
+              style: Styles.textStyle16.copyWith(
                 color: textcolor ?? const Color(0xff282A28),
               ),
               textAlign: TextAlign.center,

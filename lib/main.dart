@@ -1,6 +1,7 @@
 import 'package:cinezone_app/core/utils/app_router.dart';
 import 'package:cinezone_app/features/home/presentation/manager/cubit/movie_cubit.dart';
 import 'package:cinezone_app/features/navBar/manager/cubit/nav_bar_cubit.dart';
+import 'package:cinezone_app/features/profile/presentation/manager/cubit/watch_history_cubit.dart';
 import 'package:cinezone_app/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -40,6 +41,7 @@ class _CineZoneAppState extends State<CineZoneApp> {
       providers: [
         BlocProvider(create: (_) => NavBarCubit()),
         BlocProvider(create: (_) => MovieCubit()),
+        BlocProvider(create: (_) => WatchHistoryCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
