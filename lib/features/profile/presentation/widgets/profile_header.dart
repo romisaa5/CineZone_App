@@ -1,8 +1,10 @@
 import 'package:cinezone_app/core/theme/app_colors.dart';
 import 'package:cinezone_app/core/theme/text_styles.dart';
+import 'package:cinezone_app/core/utils/app_router.dart';
 import 'package:cinezone_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -53,13 +55,15 @@ class ProfileHeader extends StatelessWidget {
                 text: 'Edit Profile',
                 color: AppColors.yellowcolor,
               ),
-              const SizedBox(width: 12),
               CustomButton(
                 textcolor: Colors.white,
                 isborder: false,
                 width: MediaQuery.of(context).size.width * .3,
                 text: 'Exit ↩',
                 color: AppColors.redcolor,
+                onTap: () {
+                  GoRouter.of(context).go(AppRouter.loginView);
+                },
               ),
             ],
           ),

@@ -2,7 +2,7 @@ class Movie {
   final String title;
   final String image;
   final double rating;
-  final String? genre;
+  final String genre;
 
   Movie({
     required this.title,
@@ -11,12 +11,6 @@ class Movie {
     required this.genre,
   });
   static List<Movie> movieList = [
-    Movie(
-      title: '1917',
-      image: 'assets/images/onboard1.png',
-      rating: 7.7,
-      genre: 'Action',
-    ),
     Movie(
       title: 'Captain America',
       image: 'assets/images/onboard2.png',
