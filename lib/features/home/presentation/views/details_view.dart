@@ -61,6 +61,7 @@ class DetailsView extends StatelessWidget {
                   color: AppColors.redcolor,
                   width: double.infinity,
                 ),
+                
               ],
             ),
           ),

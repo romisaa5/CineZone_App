@@ -75,7 +75,10 @@ class _BrowseViewState extends State<BrowseView> {
               ),
             ),
             Movie.movieList.where((m) => m.genre == selectedGenre).isEmpty
-                ? EmptySection()
+                ? SizedBox(
+                  height: MediaQuery.of(context).size.height * .5,
+                  child: Center(child: EmptySection()),
+                )
                 : GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),

@@ -11,7 +11,7 @@ import 'package:cinezone_app/features/onboarding/views/fourth_view.dart';
 import 'package:cinezone_app/features/onboarding/views/second_view.dart';
 import 'package:cinezone_app/features/onboarding/views/start_view.dart';
 import 'package:cinezone_app/features/onboarding/views/third_view.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cinezone_app/features/profile/presentation/views/edit_profile_view.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRouter {
@@ -27,12 +27,9 @@ class AppRouter {
   static final forgetPassword = '/forgetpassword';
   static final homeview = '/homeview';
   static final detailsview = '/detailsview';
+  static final editprofileview = '/editprofileview';
   static final router = GoRouter(
-    initialLocation:
-        (FirebaseAuth.instance.currentUser != null &&
-                FirebaseAuth.instance.currentUser!.emailVerified)
-            ? homeview
-            : welcomeView,
+    initialLocation: homeview,
 
     routes: [
       GoRoute(path: welcomeView, builder: (context, state) => StartView()),
@@ -58,6 +55,10 @@ class AppRouter {
       GoRoute(
         path: forgetPassword,
         builder: (context, state) => ForgetPassword(),
+      ),
+      GoRoute(
+        path: editprofileview,
+        builder: (context, state) => EditProfileView(),
       ),
     ],
   );

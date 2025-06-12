@@ -49,6 +49,9 @@ class ProfileHeader extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomButton(
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.editprofileview);
+                },
                 textcolor: Colors.white,
                 isborder: false,
                 width: MediaQuery.of(context).size.width * .5,
