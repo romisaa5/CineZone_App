@@ -3,14 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Styles {
   static final textStyle12 = TextStyle(
+    color: Colors.grey,
     fontSize: 12.sp,
     fontWeight: FontWeight.normal,
     fontFamily: 'inter',
+    decoration: TextDecoration.none,
   );
   static final textStyle14 = TextStyle(
+    color: Colors.grey,
     fontSize: 14.sp,
     fontWeight: FontWeight.normal,
     fontFamily: 'inter',
+    decoration: TextDecoration.none,
   );
   static final textStyle16 = TextStyle(
     fontSize: 16.sp,
@@ -20,8 +24,10 @@ class Styles {
   );
   static final textStyle18 = TextStyle(
     fontSize: 18.sp,
+    color: Colors.white,
     fontWeight: FontWeight.w600,
     fontFamily: 'inter',
+    decoration: TextDecoration.none,
   );
   static final textStyle32 = TextStyle(
     fontSize: 32.sp,

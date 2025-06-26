@@ -13,10 +13,12 @@ class WatchHistoryCubit extends Cubit<WatchHistoryState> {
     watchList = [];
     history = [
       Movie(
-        title: 'The Mask',
-        image: 'assets/images/onboard1.png',
-        rating: 7.0,
-        genre: 'Comedy',
+        title: 'Captain America',
+        image: 'assets/images/onboard2.png',
+        rating: 7.7,
+        genre: 'Action',
+        summary: Movie.defaultSummary,
+        cast: Movie.defaultCast,
       ),
     ];
 

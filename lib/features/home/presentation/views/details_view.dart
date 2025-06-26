@@ -1,8 +1,14 @@
 import 'package:cinezone_app/core/theme/app_colors.dart';
 import 'package:cinezone_app/core/theme/text_styles.dart';
 import 'package:cinezone_app/core/widgets/custom_button.dart';
+import 'package:cinezone_app/features/home/presentation/widgets/cast_section.dart';
+import 'package:cinezone_app/features/home/presentation/widgets/screenshot_sction.dart';
+import 'package:cinezone_app/features/home/presentation/widgets/similar_movies.dart';
+import 'package:cinezone_app/features/home/presentation/widgets/small_container_details.dart';
 import 'package:cinezone_app/features/home/models/movie.dart';
+import 'package:cinezone_app/features/home/presentation/widgets/summary_section.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DetailsView extends StatelessWidget {
   const DetailsView({super.key, required this.movie});
@@ -53,6 +59,8 @@ class DetailsView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 10.h,
               children: [
                 CustomButton(
                   textcolor: Colors.white,
@@ -61,7 +69,25 @@ class DetailsView extends StatelessWidget {
                   color: AppColors.redcolor,
                   width: double.infinity,
                 ),
-                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    for (var item in [
+                      {'value': 15, 'icon': Icons.favorite},
+                      {'value': 90, 'icon': Icons.access_time},
+                      {'value': 7.6, 'icon': Icons.star},
+                    ])
+                      SmallContainerDetails(
+                        value: item['value'] as num,
+                        icon: item['icon'] as IconData,
+                      ),
+                  ],
+                ),
+                ScreenshotSction(),
+                SimilarMovies(currentMovie: movie),
+                SummarySection(summary: movie.summary!),
+                SizedBox(height: 20),
+                CastSection(cast: movie.cast),
               ],
             ),
           ),

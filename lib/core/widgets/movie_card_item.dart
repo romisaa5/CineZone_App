@@ -15,56 +15,62 @@ class MovieCardItem extends StatelessWidget {
   final bool isActive;
   final bool isSmall;
   @override
+  @override
   Widget build(BuildContext context) {
     final double ratingFontSize = isSmall ? 10 : 12;
     final double starSize = isSmall ? 12 : 14;
     final double radius = isSmall ? 12 : 20;
     final double width = isSmall ? 120 : 250;
     final double height = isSmall ? 160 : 350;
-    return InkWell(
-      onTap: () {
-        GoRouter.of(context).push(AppRouter.detailsview, extra: movie);
-      },
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(radius),
-            child: Image.asset(
-              movie.image,
-              fit: BoxFit.cover,
-              width: width,
-              height: height,
-            ),
-          ),
-          Positioned(
-            top: 8,
-            left: 8,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-              decoration: BoxDecoration(
-                color: Colors.black87,
-                borderRadius: BorderRadius.circular(12),
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {
+          GoRouter.of(context).push(AppRouter.detailsview, extra: movie);
+        },
+        borderRadius: BorderRadius.circular(radius),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(radius),
+              child: Image.asset(
+                movie.image,
+                fit: BoxFit.cover,
+                width: width,
+                height: height,
               ),
-              child: Row(
-                children: [
-                  Text(
-                    movie.rating.toString(),
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: ratingFontSize,
+            ),
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.black87,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    Text(
+                      movie.rating.toString(),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: ratingFontSize,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 3),
-                  Icon(
-                    Icons.star,
-                    color: AppColors.yellowcolor,
-                    size: starSize,
-                  ),
-                ],
+                    SizedBox(width: 3),
+                    Icon(
+                      Icons.star,
+                      color: AppColors.yellowcolor,
+                      size: starSize,
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
